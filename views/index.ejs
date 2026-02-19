@@ -1,0 +1,29 @@
+<h1>🏋️ Sportify Fitness Platform</h1>
+
+<% if (user) { %>
+    <h3>Welcome <%= user.name %></h3>
+    <a href="/dashboard">Go to Dashboard</a>
+    <a href="/logout">Logout</a>
+<% } else { %>
+    <a href="/register">Register</a>
+    <a href="/login">Login</a>
+<% } %>
+
+<h2>All Users & Their Workouts</h2>
+
+<% users.forEach(u => { %>
+    <h3>👤 <%= u.name %></h3>
+    <ul>
+        <% workouts.forEach(w => { %>
+            <% if (w.userId == u._id) { %>
+                <li>
+                    <%= w.exercise %> -
+                    <%= w.duration %> min -
+                    <%= w.calories %> cal
+                </li>
+            <% } %>
+        <% }) %>
+    </ul>
+<% }) %>
+
+
